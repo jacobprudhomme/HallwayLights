@@ -1,10 +1,10 @@
 /**
- * SyncArduinoClock. 
+ * SyncArduinoClock.
  *
  * portIndex must be set to the port connected to the Arduino
- * 
- * The current time is sent in response to request message from Arduino 
- * or by clicking the display window 
+ *
+ * The current time is sent in response to request message from Arduino
+ * or by clicking the display window
  *
  * The time message is 11 ASCII text characters; a header (the letter 'T')
  * followed by the ten digit system time (unix time)
