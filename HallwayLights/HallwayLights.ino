@@ -5,6 +5,8 @@
 #include <Time.h>
 #include <TimeLib.h>
 
+int hours_red[] = {9, 10, 11, 12, 14, 14};
+int minutes_red[] = {15, 30, 40, 55, 50, 5, 15, 30};
 int del[] = {11, 12, 13}; // RYG
 boolean wed = false;   // Is it Wednesday?
 
@@ -17,34 +19,34 @@ void setup() {
 }
 
 void loop() {
+  Serial.println('7');
   processSyncMessage();
-  
   switch(weekday()) {
-    case 1:
+    case 0:
       Serial.println("Saturday");
       wed = false;
       break;
-    case 2:
+    case 1:
       Serial.println("Sunday");
       wed = false;
       break;
-    case 3:
+    case 2:
       Serial.println("Monday");
       wed = false;
       break;
-    case 4:
+    case 3:
       Serial.println("Tuesday");
       wed = false;
       break;
-    case 5:
+    case 4:
       Serial.println("Wednesday");
       wed = true;
       break;
-    case 6:
+    case 5:
       Serial.println("Thursday");
       wed = false;
       break;
-    case 7:
+    case 6:
       Serial.println("Friday");
       wed = false;
       break;
@@ -60,7 +62,7 @@ void loop() {
     digitalWrite(del[2], HIGH);
   }
 
-  delay(3600000); // Check every hour
+  delay(5000); // Check every hour
 }
 
 void processSyncMessage() {
