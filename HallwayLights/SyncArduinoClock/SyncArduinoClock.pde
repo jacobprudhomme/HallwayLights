@@ -13,7 +13,7 @@
 import java.util.*;
 import processing.serial.*;
 
-public static final short portIndex = 1;  // select the com port, 0 is the first port
+public static final short portIndex = 0;  // select the com port, 0 is the first port
 public static final char TIME_HEADER = 'T'; //header byte for arduino serial time message 
 public static final char TIME_REQUEST = '7';  // ASCII bell character 
 public static final char LF = 10;     // ASCII linefeed
