@@ -33,7 +33,7 @@ void draw()
     char val = char(myPort.read());         // read it and store it in val
     if(val == TIME_REQUEST){
        long t = getTimeNow();
-       sendTimeMessage(TIME_HEADER, t)
+       sendTimeMessage(TIME_HEADER, t);
     }
     else
     { 
