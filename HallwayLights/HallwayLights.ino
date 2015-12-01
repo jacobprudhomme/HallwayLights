@@ -5,8 +5,16 @@
 #include <Time.h>
 #include <TimeLib.h>
 
-int hours_red[] = {9, 10, 11, 12, 14, 14};
-int minutes_red[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_red_reg[] = {9, 10, 11, 12, 14, 14};
+int minutes_red_reg[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_red_cap[] = {9, 10, 11, 12, 14, 14};
+int minutes_red_cap[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_green_reg[] = {9, 10, 11, 12, 14, 14};
+int minutes_green_reg[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_green_cap[] = {9, 10, 11, 12, 14, 14};
+int minutes_green_cap[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_off[] = {3};
+int minutes_off[] = {30};
 int del[] = {11, 12, 13}; // RYG
 boolean wed = false;   // Is it Wednesday?
 
@@ -56,10 +64,22 @@ void loop() {
     digitalWrite(del[i], LOW);
   }
 
-  if(wed == true) {
-    digitalWrite(del[0], HIGH);
+  if(wed == false) {
+    for(int i = 0; i < 6; i++) {
+      if(hour() == hours_red_reg[i]) {
+        if(minute() == minutes_red_reg[i]) {
+          digitalWrite(del[0], HIGH);
+        }
+      }
+    }
   } else {
-    digitalWrite(del[2], HIGH);
+    for(int i = 0; i < 6; i++) {
+      if(hour() == hours_red_cap[i]) {
+        if(minute() == minutes_red_cap[i]) {
+          digitalWrite(del[0], HIGH);
+        }
+      }
+    }
   }
 
   delay(5000); // Check every hour
