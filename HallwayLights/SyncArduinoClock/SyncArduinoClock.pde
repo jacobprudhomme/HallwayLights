@@ -9,18 +9,18 @@
  * The time message is 11 ASCII text characters; a header (the letter 'T')
  * followed by the ten digit system time (unix time)
  */
- 
+
 import java.util.*;
 import processing.serial.*;
 
 public static final short portIndex = 0;  // select the com port, 0 is the first port
-public static final char TIME_HEADER = 'T'; //header byte for arduino serial time message 
-public static final char TIME_REQUEST = '7';  // ASCII bell character 
+public static final char TIME_HEADER = 'T'; //header byte for arduino serial time message
+public static final char TIME_REQUEST = '7';  // ASCII bell character
 public static final char LF = 10;     // ASCII linefeed
 public static final char CR = 13;     // ASCII linefeed
 Serial myPort;     // Create object from Serial class
 
-void setup() {  
+void setup() {
   size(200, 200);
   println(Serial.list());
   println(" Connecting to -> " + Serial.list()[portIndex]);
@@ -36,35 +36,35 @@ void draw()
        sendTimeMessage(TIME_HEADER, t);
     }
     else
-    { 
+    {
        if(val == LF)
            ; //igonore
-       else if(val == CR)           
+       else if(val == CR)
          println();
-       else  
+       else
          print(val); // echo everying but time request
     }
-  }  
+  }
 }
 
-void mousePressed() {  
-  sendTimeMessage( TIME_HEADER, getTimeNow());   
+void mousePressed() {
+  sendTimeMessage( TIME_HEADER, getTimeNow());
 }
 
 
-void sendTimeMessage(char header, long time) {  
-  String timeStr = String.valueOf(time);  
+void sendTimeMessage(char header, long time) {
+  String timeStr = String.valueOf(time);
   myPort.write(header);  // send header and time to arduino
-  myPort.write(timeStr);   
+  myPort.write(timeStr);
 }
 
 long getTimeNow(){
-  // java time is in ms, we want secs    
+  // java time is in ms, we want secs
   GregorianCalendar cal = new GregorianCalendar();
   cal.setTime(new Date());
   int	tzo = cal.get(Calendar.ZONE_OFFSET);
   int	dst = cal.get(Calendar.DST_OFFSET);
-  long now = (cal.getTimeInMillis() / 1000) ; 
-  now = now + (tzo/1000) + (dst/1000); 
+  long now = (cal.getTimeInMillis() / 1000);
+  now = now + (tzo/1000) + (dst/1000);
   return now;
 }
