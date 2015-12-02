@@ -7,13 +7,13 @@
 
 int hours_red_reg[] = {9, 10, 12, 14};
 int minutes_red_reg[] = {15, 40, 55, 15};
-int hours_green_reg[] = {10, 11, 14, 15};
-int minutes_green_reg[] = {30, 55, 5, 30};
+int hours_green_reg[] = {10, 11, 14};
+int minutes_green_reg[] = {30, 55, 5};
 int hours_red_cap[] = {9, 10, 11, 13, 14};
 int minutes_red_cap[] = {15, 22, 30, 22, 30};
-int hours_green_cap[] = {10, 11, 12, 12, 15};
-int minutes_green_cap[] = {15, 22, 30, 22, 30};
-int hours_off[] = {3};
+int hours_green_cap[] = {10, 11, 12, 12};
+int minutes_green_cap[] = {15, 22, 30, 22};
+int hours_off[] = {15};
 int minutes_off[] = {30};
 int del[] = {11, 12, 13}; // RYG
 boolean wed = false;   // Is it Wednesday?
@@ -65,18 +65,40 @@ void loop() {
   }
 
   if(wed == false) {
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 4; i++) {
       if(hour() == hours_red_reg[i]) {
-        if(minute() == minutes_red_reg[i]) {
-          digitalWrite(del[0], HIGH);
+        for(int j = 0; j < 4; j++) {
+          if(minute() == minutes_red_reg[i]) {
+            digitalWrite(del[0], HIGH);
+          }
+        }
+      }
+    }
+    for(int i = 0; i < 3; i++) {
+      if(hour() == hours_green_reg[i]) {
+        for(int j = 0; j < 3; j++) {
+          if(minute() == minutes_green_reg[i]) {
+            digitalWrite(del[2], HIGH);
+          }
         }
       }
     }
   } else {
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 5; i++) {
       if(hour() == hours_red_cap[i]) {
-        if(minute() == minutes_red_cap[i]) {
-          digitalWrite(del[0], HIGH);
+        for(int j = 0; j < 5; j++) {
+          if(minute() == minutes_red_cap[i]) {
+            digitalWrite(del[0], HIGH);
+          }
+        }
+      }
+    }
+    for(int i = 0; i < 4; i++) {
+      if(hour() == hours_green_cap[i]) {
+        for(int j = 0; j < 4; j++) {
+          if(minute() == minutes_green_cap[i]) {
+            digitalWrite(del[2], HIGH);
+          }
         }
       }
     }
