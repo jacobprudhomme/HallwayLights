@@ -5,14 +5,14 @@
 #include <Time.h>
 #include <TimeLib.h>
 
-int hours_red_reg[] = {9, 10, 11, 12, 14, 14};
-int minutes_red_reg[] = {15, 30, 40, 55, 50, 5, 15, 30};
-int hours_red_cap[] = {9, 10, 11, 12, 14, 14};
-int minutes_red_cap[] = {15, 30, 40, 55, 50, 5, 15, 30};
-int hours_green_reg[] = {9, 10, 11, 12, 14, 14};
-int minutes_green_reg[] = {15, 30, 40, 55, 50, 5, 15, 30};
-int hours_green_cap[] = {9, 10, 11, 12, 14, 14};
-int minutes_green_cap[] = {15, 30, 40, 55, 50, 5, 15, 30};
+int hours_red_reg[] = {9, 10, 12, 14};
+int minutes_red_reg[] = {15, 40, 55, 15};
+int hours_green_reg[] = {10, 11, 14, 15};
+int minutes_green_reg[] = {30, 55, 5, 30};
+int hours_red_cap[] = {9, 10, 11, 13, 14};
+int minutes_red_cap[] = {15, 22, 30, 22, 30};
+int hours_green_cap[] = {10, 11, 12, 12, 15};
+int minutes_green_cap[] = {15, 22, 30, 22, 30};
 int hours_off[] = {3};
 int minutes_off[] = {30};
 int del[] = {11, 12, 13}; // RYG
