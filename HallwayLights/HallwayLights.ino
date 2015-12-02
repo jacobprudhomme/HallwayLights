@@ -82,7 +82,7 @@ void loop() {
     }
   }
 
-  delay(5000); // Check every hour
+  delay(30000); // Check every 30 seconds
 }
 
 void processSyncMessage() {
