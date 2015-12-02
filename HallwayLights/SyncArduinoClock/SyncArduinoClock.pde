@@ -17,7 +17,7 @@ public static final short portIndex = 0;  // select the com port, 0 is the first
 public static final char TIME_HEADER = 'T'; //header byte for arduino serial time message
 public static final char TIME_REQUEST = '7';  // ASCII bell character
 public static final char LF = 10;     // ASCII linefeed
-public static final char CR = 13;     // ASCII linefeed
+public static final char CR = 13;     // ASCII carriage return
 Serial myPort;     // Create object from Serial class
 
 void setup() {
