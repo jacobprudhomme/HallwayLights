@@ -24,6 +24,8 @@ void setup() {
   for(int i = 0; i < 3; i++) {
     pinMode(del[i], OUTPUT);
   }
+
+  digitalWrite(del[2], HIGH);
 }
 
 void loop() {
@@ -60,15 +62,16 @@ void loop() {
       break;
   }
 
-  for(int i = 0; i < 3; i++) {
-    digitalWrite(del[i], LOW);
-  }
-
   if(wed == false) {
     for(int i = 0; i < 4; i++) {
       if(hour() == hours_red_reg[i]) {
+        Serial.println("The hours align");
         for(int j = 0; j < 4; j++) {
-          if(minute() == minutes_red_reg[i]) {
+          if(minute() == minutes_red_reg[j]) {
+            Serial.println("The minutes align");
+            for(int k = 0; k < 3; k++) {
+              digitalWrite(del[k], LOW);
+            }
             digitalWrite(del[0], HIGH);
           }
         }
@@ -77,7 +80,10 @@ void loop() {
     for(int i = 0; i < 3; i++) {
       if(hour() == hours_green_reg[i]) {
         for(int j = 0; j < 3; j++) {
-          if(minute() == minutes_green_reg[i]) {
+          if(minute() == minutes_green_reg[j]) {
+            for(int k = 0; k < 3; k++) {
+              digitalWrite(del[k], LOW);
+            }
             digitalWrite(del[2], HIGH);
           }
         }
@@ -87,7 +93,10 @@ void loop() {
     for(int i = 0; i < 5; i++) {
       if(hour() == hours_red_cap[i]) {
         for(int j = 0; j < 5; j++) {
-          if(minute() == minutes_red_cap[i]) {
+          if(minute() == minutes_red_cap[j]) {
+            for(int k = 0; k < 3; k++) {
+              digitalWrite(del[k], LOW);
+            }
             digitalWrite(del[0], HIGH);
           }
         }
@@ -96,7 +105,10 @@ void loop() {
     for(int i = 0; i < 4; i++) {
       if(hour() == hours_green_cap[i]) {
         for(int j = 0; j < 4; j++) {
-          if(minute() == minutes_green_cap[i]) {
+          if(minute() == minutes_green_cap[j]) {
+            for(int k = 0; k < 3; k++) {
+              digitalWrite(del[k], LOW);
+            }
             digitalWrite(del[2], HIGH);
           }
         }
