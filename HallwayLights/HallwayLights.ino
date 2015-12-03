@@ -62,6 +62,9 @@ void loop() {
       break;
   }
 
+  Serial.println(minute());
+  Serial.println(hour());
+
   if(wed == false) {
     for(int i = 0; i < 4; i++) {
       if(hour() == hours_red_reg[i]) {
