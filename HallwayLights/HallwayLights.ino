@@ -68,8 +68,8 @@ void loop() {
         Serial.println("The hours align");
         if(minute() == minutes_red_reg[i]) {
           Serial.println("The minutes align");
-          for(int k = 0; k < 3; k++) {
-            digitalWrite(del[k], LOW);
+          for(int j = 0; j < 3; j++) {
+            digitalWrite(del[j], LOW);
           }
           digitalWrite(del[0], HIGH);
         }
@@ -80,8 +80,8 @@ void loop() {
         Serial.println("The hours align");
         if(minute() == minutes_green_reg[i]) {
           Serial.println("The minutes align");
-          for(int k = 0; k < 3; k++) {
-            digitalWrite(del[k], LOW);
+          for(int j = 0; j < 3; j++) {
+            digitalWrite(del[j], LOW);
           }
           digitalWrite(del[2], HIGH);
         }
@@ -93,8 +93,8 @@ void loop() {
         Serial.println("The hours align");
         if(minute() == minutes_red_cap[i]) {
           Serial.println("The minutes align");
-          for(int k = 0; k < 3; k++) {
-            digitalWrite(del[k], LOW);
+          for(int j = 0; j < 3; j++) {
+            digitalWrite(del[j], LOW);
           }
           digitalWrite(del[0], HIGH);
         }
@@ -105,8 +105,8 @@ void loop() {
         Serial.println("The hours align");
         if(minute() == minutes_green_cap[i]) {
           Serial.println("The minutes align");
-          for(int k = 0; k < 3; k++) {
-            digitalWrite(del[k], LOW);
+          for(int j = 0; j < 3; j++) {
+            digitalWrite(del[j], LOW);
           }
           digitalWrite(del[2], HIGH);
         }
