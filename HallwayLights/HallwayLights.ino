@@ -31,7 +31,10 @@ void setup() {
 void loop() {
   Serial.println('7');
   processSyncMessage();
-  switch(weekday()) {
+
+  time_t t = now();
+  
+  switch(weekday(t)) {
     case 0:
       Serial.println("Saturday");
       wed = false;
@@ -62,14 +65,14 @@ void loop() {
       break;
   }
 
-  Serial.println(minute());
-  Serial.println(hour());
+  Serial.println(hour(t));
+  Serial.println(minute(t));
 
   if(wed == false) {
     for(int i = 0; i < 4; i++) {
-      if(hour() == hours_red_reg[i]) {
+      if(hour(t) == hours_red_reg[i]) {
         Serial.println("The hours align");
-        if(minute() == minutes_red_reg[i]) {
+        if(minute(t) == minutes_red_reg[i]) {
           Serial.println("The minutes align");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -79,9 +82,9 @@ void loop() {
       }
     }
     for(int i = 0; i < 3; i++) {
-      if(hour() == hours_green_reg[i]) {
+      if(hour(t) == hours_green_reg[i]) {
         Serial.println("The hours align");
-        if(minute() == minutes_green_reg[i]) {
+        if(minute(t) == minutes_green_reg[i]) {
           Serial.println("The minutes align");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -92,9 +95,9 @@ void loop() {
     }
   } else {
     for(int i = 0; i < 5; i++) {
-      if(hour() == hours_red_cap[i]) {
+      if(hour(t) == hours_red_cap[i]) {
         Serial.println("The hours align");
-        if(minute() == minutes_red_cap[i]) {
+        if(minute(t) == minutes_red_cap[i]) {
           Serial.println("The minutes align");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -104,9 +107,9 @@ void loop() {
       }
     }
     for(int i = 0; i < 4; i++) {
-      if(hour() == hours_green_cap[i]) {
+      if(hour(t) == hours_green_cap[i]) {
         Serial.println("The hours align");
-        if(minute() == minutes_green_cap[i]) {
+        if(minute(t) == minutes_green_cap[i]) {
           Serial.println("The minutes align");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -117,7 +120,7 @@ void loop() {
     }
   }
 
-  delay(30000); // Check every 30 seconds
+  delay(3000); // Check every 30 seconds
 }
 
 void processSyncMessage() {
