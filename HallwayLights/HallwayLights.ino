@@ -5,8 +5,8 @@
 #include <Time.h>     // Time library
 #include <TimeLib.h>  // Time library
 
-int hours_red_reg[] = {9, 10, 12, 14};        // Les heures de commencement des périodes
-int minutes_red_reg[] = {15, 40, 55, 15};     // Les minutes de commencement des périodes
+int hours_red_reg[] = {9, 10, 13, 14};        // Les heures de commencement des périodes
+int minutes_red_reg[] = {15, 40, 2, 15};     // Les minutes de commencement des périodes
 int hours_green_reg[] = {10, 11, 14};         // Les heures de fin des périodes
 int minutes_green_reg[] = {30, 55, 5};        // Les minutes de fin des périodes
 int hours_red_cap[] = {9, 10, 11, 13, 14};    // Les heures de commencement des périodes sur une journée CAP
@@ -70,9 +70,9 @@ void loop() {
 
   if(wed == false) {
     for(int i = 0; i < 4; i++) {
-      if(hour(t) == hours_red_reg[i]) {
+      if(hour(t) => hours_red_reg[i] && hour(t) < hours_red_reg[i + 1]) {
         Serial.println("The hours align red reg");
-        if(minute(t) == minutes_red_reg[i]) {
+        if(minute(t) => minutes_red_reg[i] && minute(t) < minutes_red_reg[i + 1]) {
           Serial.println("The minutes align red reg");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -82,9 +82,9 @@ void loop() {
       }
     }
     for(int i = 0; i < 3; i++) {
-      if(hour(t) == hours_green_reg[i]) {
+      if(hour(t) => hours_green_reg[i] && hour(t) < hours_green_reg[i + 1]) {
         Serial.println("The hours align green reg");
-        if(minute(t) == minutes_green_reg[i]) {
+        if(minute(t) => minutes_green_reg[i] && minute(t) < minutes_green_reg[i + 1]) {
           Serial.println("The minutes align green reg");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -95,9 +95,9 @@ void loop() {
     }
   } else {
     for(int i = 0; i < 5; i++) {
-      if(hour(t) == hours_red_cap[i]) {
+      if(hour(t) => hours_red_cap[i] && hour(t) < hours_red_cap[i + 1]) {
         Serial.println("The hours align red cap");
-        if(minute(t) == minutes_red_cap[i]) {
+        if(minute(t) => minutes_red_cap[i] && minute(t) < minutes_red_cap[i + 1]) {
           Serial.println("The minutes align red cap");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -107,9 +107,9 @@ void loop() {
       }
     }
     for(int i = 0; i < 4; i++) {
-      if(hour(t) == hours_green_cap[i]) {
+      if(hour(t) => hours_green_cap[i] && hour(t) < hours_green_cap[i + 1]) {
         Serial.println("The hours align for green cap");
-        if(minute(t) == minutes_green_cap[i]) {
+        if(minute(t) => minutes_green_cap[i] && minute(t) < minutes_green_cap[i + 1]) {
           Serial.println("The minutes align green cap");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
