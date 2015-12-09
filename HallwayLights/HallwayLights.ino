@@ -12,7 +12,7 @@ int minutes_green_reg[] = {30, 55, 5, 30};        // Les minutes de fin des pér
 int hours_red_cap[] = {9, 10, 11, 13, 14, 16};    // Les heures de commencement des périodes sur une journée CAP
 int minutes_red_cap[] = {15, 22, 30, 22, 30, 55}; // Les minutes de commencement des périodes sur une journée CAP
 int hours_green_cap[] = {10, 11, 12, 12, 15, 16};     // Les heures de fin des périodes sur une journée CAP
-int minutes_green_cap[] = {15, 22, 30, 22, 21, 55};   // Les minutes de fin des périodes sur une journée CAP
+int minutes_green_cap[] = {15, 22, 30, 22, 22, 55};   // Les minutes de fin des périodes sur une journée CAP
 int del[] = {11, 12, 13};                     // DELs: Rouge, Jaune, Vert
 boolean wed = false;                          // Est-ce que c'est une journée CAP (mercredi)?
 
@@ -70,7 +70,7 @@ void loop() {
     for(int i = 0; i < 4; i++) {
       if((hour(t) >= hours_red_reg[i]) && (hour(t) <= hours_green_reg[i])) {
         Serial.println("The hours align red reg");
-        if(minute(t) >= minutes_red_reg[i]) {
+        if((minute(t) >= minutes_red_reg[i]) && (minute(t) < (minutes_red_reg[i] + 75))) {
           Serial.println("The minutes align red reg");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -95,7 +95,7 @@ void loop() {
     for(int i = 0; i < 5; i++) {
       if((hour(t) >= hours_red_cap[i]) && (hour(t) <= hours_green_cap[i])) {
         Serial.println("The hours align red cap");
-        if(minute(t) >= minutes_red_cap[i]) {
+        if((minute(t) >= minutes_red_cap[i]) && (minute(t) < (minutes_red_cap[i] + 60))) {
           Serial.println("The minutes align red cap");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
