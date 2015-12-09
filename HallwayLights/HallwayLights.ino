@@ -9,10 +9,10 @@ int hours_red_reg[] = {9, 10, 13, 14};        // Les heures de commencement des 
 int minutes_red_reg[] = {15, 40, 2, 15};     // Les minutes de commencement des périodes
 int hours_green_reg[] = {10, 11, 14, 15};         // Les heures de fin des périodes
 int minutes_green_reg[] = {30, 55, 5, 30};        // Les minutes de fin des périodes
-int hours_red_cap[] = {9, 10, 11, 13, 14, 16};    // Les heures de commencement des périodes sur une journée CAP
-int minutes_red_cap[] = {15, 22, 30, 22, 30, 55}; // Les minutes de commencement des périodes sur une journée CAP
-int hours_green_cap[] = {10, 11, 12, 12, 15, 16};     // Les heures de fin des périodes sur une journée CAP
-int minutes_green_cap[] = {15, 22, 30, 22, 22, 55};   // Les minutes de fin des périodes sur une journée CAP
+int hours_red_cap[] = {9, 10, 11, 13, 14};    // Les heures de commencement des périodes sur une journée CAP
+int minutes_red_cap[] = {15, 22, 30, 22, 30}; // Les minutes de commencement des périodes sur une journée CAP
+int hours_green_cap[] = {10, 11, 12, 12, 15};     // Les heures de fin des périodes sur une journée CAP
+int minutes_green_cap[] = {15, 22, 30, 22, 30};   // Les minutes de fin des périodes sur une journée CAP
 int del[] = {11, 12, 13};                     // DELs: Rouge, Jaune, Vert
 boolean wed = false;                          // Est-ce que c'est une journée CAP (mercredi)?
 
