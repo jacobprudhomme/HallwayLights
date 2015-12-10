@@ -118,7 +118,7 @@ void loop() {
     }
   }
 
-  delay(30000); // Check every 30 seconds
+  delay(5000); // Check every 5 seconds
 }
 
 void processSyncMessage() {
