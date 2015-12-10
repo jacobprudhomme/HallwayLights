@@ -70,7 +70,7 @@ void loop() {
     for(int i = 0; i < 4; i++) {
       if((hour(t) >= hours_red_reg[i]) && (hour(t) <= hours_green_reg[i])) {
         Serial.println("The hours align red reg");
-        if((minute(t) >= minutes_red_reg[i]) && (minute(t) < (minutes_red_reg[i] + 75))) {
+        if(((hour(t) * 60 + minute(t)) >= (hours_red_reg[i] * 60 + minutes_red_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_reg[i] * 60 + minutes_green_reg[i]))) {
           Serial.println("The minutes align red reg");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
@@ -95,7 +95,7 @@ void loop() {
     for(int i = 0; i < 5; i++) {
       if((hour(t) >= hours_red_cap[i]) && (hour(t) <= hours_green_cap[i])) {
         Serial.println("The hours align red cap");
-        if((minute(t) >= minutes_red_cap[i]) && (minute(t) < (minutes_red_cap[i] + 60))) {
+        if(((hour(t) * 60 + minute(t)) >= (hours_red_cap[i] * 60 + minutes_red_cap[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_cap[i] * 60 + minutes_green_cap[i]))) {
           Serial.println("The minutes align red cap");
           for(int j = 0; j < 3; j++) {
             digitalWrite(del[j], LOW);
