@@ -104,8 +104,9 @@ void loop() {
     } else {
       while(1) {
         digitalWrite(del[0], HIGH);
-        delay(1000);
+        delay(500);
         digitalWrite(del[0], LOW);
+        delay(500);
       }
     }
   } else {
@@ -140,13 +141,14 @@ void loop() {
     } else {
       while(1) {
         digitalWrite(del[0], HIGH);
-        delay(1000);
+        delay(500);
         digitalWrite(del[0], LOW);
+        delay(500);
       }
     }
   }
 
-  delay(1000); // Check every second
+  delay(5000); // Check every 5 seconds
 }
 
 void processSyncMessage() {
