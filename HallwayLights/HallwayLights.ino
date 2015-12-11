@@ -102,6 +102,9 @@ void loop() {
         }
       }
     } else {
+      for(int j = 0; j < 3; j++) {
+        digitalWrite(del[j], LOW);
+      }
       while(1) {
         digitalWrite(del[0], HIGH);
         delay(500);
@@ -139,6 +142,9 @@ void loop() {
         }
       }
     } else {
+      for(int j = 0; j < 3; j++) {
+        digitalWrite(del[j], LOW);
+      }
       while(1) {
         digitalWrite(del[0], HIGH);
         delay(500);
