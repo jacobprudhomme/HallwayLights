@@ -34,7 +34,7 @@ void loop() {
   Serial.println('7');
   processSyncMessage();
 
-  time_t t = now();
+  time_t t = now(); // Pour éviter des ambiguités si le temps actuel change de minute durant la boucle
   
   switch(weekday(t)) {
     case 0:
