@@ -5,16 +5,20 @@
 #include <Time.h>     // Time library
 #include <TimeLib.h>  // Time library
 
-int hours_red_reg[] = {9, 10, 13, 14};        // Les heures de commencement des périodes
-int minutes_red_reg[] = {15, 40, 2, 15};     // Les minutes de commencement des périodes
+int hours_red_reg[] = {9, 10, 12, 14};            // Les heures de commencement des périodes
+int minutes_red_reg[] = {15, 40, 55, 15};         // Les minutes de commencement des périodes
+int hours_yellow_reg[] = {9, 10, 12, 14};         // Les heures d'alerte au commencement des périodes
+int minutes_yellow_reg[] = {12, 37, 52, 12};      // Les minutes d'alerte au commencement des périodes
 int hours_green_reg[] = {10, 11, 14, 15};         // Les heures de fin des périodes
 int minutes_green_reg[] = {30, 55, 5, 30};        // Les minutes de fin des périodes
-int hours_red_cap[] = {9, 10, 11, 13, 14};    // Les heures de commencement des périodes sur une journée CAP
-int minutes_red_cap[] = {15, 22, 30, 22, 30}; // Les minutes de commencement des périodes sur une journée CAP
+int hours_red_cap[] = {9, 10, 11, 13, 14};        // Les heures de commencement des périodes sur une journée CAP
+int minutes_red_cap[] = {15, 22, 30, 22, 30};     // Les minutes de commencement des périodes sur une journée CAP
+int hours_yellow_cap[] = {9, 10, 11, 13, 14};     // Les heures d'alerte au commencement des périodes sur une journée CAP
+int minutes_yellow_cap[] = {13, 20, 28, 20, 28};  // Les minutes d'alerte au commencement des périodes sur une journée CAP
 int hours_green_cap[] = {10, 11, 12, 12, 15};     // Les heures de fin des périodes sur une journée CAP
 int minutes_green_cap[] = {15, 22, 30, 22, 30};   // Les minutes de fin des périodes sur une journée CAP
-int del[] = {11, 12, 13};                     // DELs: Rouge, Jaune, Vert
-boolean wed = false;                          // Est-ce que c'est une journée CAP (mercredi)?
+int del[] = {11, 12, 13};                         // DELs: Rouge, Jaune, Vert
+boolean wed = false;                              // Est-ce que c'est une journée CAP (mercredi)?
 
 void setup() {
   Serial.begin(9600);
@@ -77,12 +81,21 @@ void loop() {
       }
     }
     for(int i = 0; i < 4; i++) {
-      if(((hour(t) * 60 + minute(t)) >= (hours_green_reg[i] * 60 + minutes_green_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_reg[i] * 60 + minutes_green_reg[i] + 10))) {
+      if(((hour(t) * 60 + minute(t)) >= (hours_green_reg[i] * 60 + minutes_green_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_yellow_reg[i] * 60 + minutes_yellow_reg[i]))) {
         Serial.println("The hours + minutes align green reg");
         for(int j = 0; j < 3; j++) {
           digitalWrite(del[j], LOW);
         }
         digitalWrite(del[2], HIGH);
+      }
+    }
+    for(int i = 0; i < 4; i++) {
+      if(((hour(t) * 60 + minute(t)) >= (hours_yellow_reg[i] * 60 + minutes_yellow_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_yellow_reg[i] * 60 + minutes_yellow_reg[i] + 3))) {
+        Serial.println("The hours + minutes align yellow reg");
+        for(int j = 0; j < 3; j++) {
+          digitalWrite(del[j], LOW);
+        }
+        digitalWrite(del[1], HIGH);
       }
     }
   } else {
@@ -96,12 +109,21 @@ void loop() {
       }
     }
     for(int i = 0; i < 5; i++) {
-      if(((hour(t) * 60 + minute(t)) >= (hours_green_cap[i] * 60 + minutes_green_cap[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_cap[i] * 60 + minutes_green_cap[i] + 10))) {
+      if(((hour(t) * 60 + minute(t)) >= (hours_green_cap[i] * 60 + minutes_green_cap[i])) && ((hour(t) * 60 + minute(t)) < (hours_yellow_cap[i] * 60 + minutes_yellow_cap[i]))) {
         Serial.println("The hours + minutes align green cap");
         for(int j = 0; j < 3; j++) {
           digitalWrite(del[j], LOW);
         }
         digitalWrite(del[2], HIGH);
+      }
+    }
+    for(int i = 0; i < 5; i++) {
+      if(((hour(t) * 60 + minute(t)) >= (hours_yellow_cap[i] * 60 + minutes_yellow_cap[i])) && ((hour(t) * 60 + minute(t)) < (hours_yellow_cap[i] * 60 + minutes_yellow_cap[i] + 2))) {
+        Serial.println("The hours + minutes align yellow cap");
+        for(int j = 0; j < 3; j++) {
+          digitalWrite(del[j], LOW);
+        }
+        digitalWrite(del[1], HIGH);
       }
     }
   }
