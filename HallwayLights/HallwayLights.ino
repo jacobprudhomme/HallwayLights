@@ -80,7 +80,10 @@ void loop() {
           for(int j = 0; j < 3; j++) {                                                                                                                                          ////////// Pour chacune des 3 DELs,
             digitalWrite(del[j], LOW);                                                                                                                                          //////////// Éteindre
           }
-          digitalWrite(del[1], HIGH);                                                                                                                                           ////////// Allumer DEL jaune
+          digitalWrite(del[1], HIGH);                                                                                                                                           ////////// Clignoter DEL jaune
+          delay(500);
+          digitalWrite(del[1], LOW);
+          delay(500);
         }
         if(((hour(t) * 60 + minute(t)) >= (hours_red_reg[i] * 60 + minutes_red_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_reg[i] * 60 + minutes_green_reg[i]))) { //////// Si le temps actuel est égal ou entre le temps de commencement de la période et de la pause, alors
           Serial.println("En classe");                                                                                                                                        ////////// Envoyer un message que c'est le temps des classes
@@ -88,12 +91,13 @@ void loop() {
             digitalWrite(del[j], LOW);                                                                                                                                        //////////// Éteindre
           }
           digitalWrite(del[0], HIGH);                                                                                                                                         ////////// Allumer DEL rouge
-        } else {                        //////// Si le temps actuel est égal ou entre le temps de commencement de la pause et de la presque-fin de la pause, alors
-          Serial.println("En pause");   ////////// Envoyer un message que c'est le temps de la pause
-          for(int j = 0; j < 3; j++) {  ////////// Pour chacune des 3 DELs,
-            digitalWrite(del[j], LOW);  //////////// Éteindre
+        }
+        if(((hour(t) * 60 + minute(t)) >= (hours_green_reg[i] * 60 + minutes_green_reg[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_reg[i] * 60 + minutes_green_reg[i] + 7))) { //////// Si le temps actuel est égal ou entre le temps de commencement de la pause et de la presque-fin de la pause, alors
+          Serial.println("En pause");                                                                                                                                                 ////////// Envoyer un message que c'est le temps de la pause
+          for(int j = 0; j < 3; j++) {                                                                                                                                                ////////// Pour chacune des 3 DELs,
+            digitalWrite(del[j], LOW);                                                                                                                                                //////////// Éteindre
           }
-          digitalWrite(del[2], HIGH);   ////////// Allumer DEL verte
+          digitalWrite(del[2], HIGH);                                                                                                                                                 ////////// Allumer DEL verte
         }
       }
     } else {                        //// Sinon, alors
@@ -116,7 +120,10 @@ void loop() {
           for(int j = 0; j < 3; j++) {                                                                                                                                          ////////// Pour chacune des 3 DELs,
             digitalWrite(del[j], LOW);                                                                                                                                          //////////// Éteindre
           }
-          digitalWrite(del[1], HIGH);                                                                                                                                           ////////// Allumer DEL jaune
+          digitalWrite(del[1], HIGH);                                                                                                                                           ////////// Clignoter DEL jaune
+          delay(500);
+          digitalWrite(del[1], LOW);
+          delay(500);
         }
         if(((hour(t) * 60 + minute(t)) >= (hours_red_cap[i] * 60 + minutes_red_cap[i])) && ((hour(t) * 60 + minute(t)) < (hours_green_cap[i] * 60 + minutes_green_cap[i]))) { //////// Si le temps actuel est égal ou entre le temps de commencement de la période et de la pause, alors
           Serial.println("En classe");                                                                                                                                        ////////// Envoyer un message que c'est le temps des classes
